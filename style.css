@@ -1,0 +1,47 @@
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: #000000;
+}
+
+body {
+  font-family: serif;
+  font-size: 4mm;
+    line-height: 1.4;
+}
+
+p {
+  margin: 0;
+  padding: 2mm;
+}
+
+.box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 4mm 6mm;
+  
+  /* hidden at first, shown after 5 seconds */
+  opacity: 0;
+  visibility: hidden;
+  animation: appear 0s 5s forwards;
+}
+
+.box a {
+  color: #000000;
+  text-decoration: none;
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
