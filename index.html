@@ -6,10 +6,46 @@
   <meta name="color-scheme" content="light">
   <title>under construction</title>
   <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-  <p>under construction</p>
-  <div class="box">
-<a href="mailto:espitalierloris@gmail.com">espitalierloris(at)gmail.com</a></div>
+  <main class="stage">
+    <h1 id="title" aria-label="hey u">
+      <svg class="line" aria-hidden="true"><text>hey</text></svg>
+      <svg class="line" aria-hidden="true"><text>u</text></svg>
+    </h1>
+
+    <div class="box">
+      <a href="mailto:espitalierloris@gmail.com">contact</a>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var lines = document.querySelectorAll('.line');
+
+      // Mesure l'encre réelle de chaque ligne (sans les marges internes de la fonte)
+      // et cadre le SVG dessus : chaque ligne occupe ainsi toute la largeur.
+      function fit() {
+        var ctx = document.createElement('canvas').getContext('2d');
+        ctx.font = '1000px "Luddites", serif';
+        lines.forEach(function (svg) {
+          var m = ctx.measureText(svg.querySelector('text').textContent);
+          var x = -m.actualBoundingBoxLeft;
+          var y = -m.actualBoundingBoxAscent;
+          var w = m.actualBoundingBoxLeft + m.actualBoundingBoxRight;
+          var h = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent;
+          svg.setAttribute('viewBox', [x, y, w, h].join(' '));
+        });
+        document.documentElement.classList.add('ready');
+      }
+
+      var loaded = (document.fonts && document.fonts.load)
+        ? document.fonts.load('1000px "Luddites"', 'hey u').catch(function () {})
+        : Promise.resolve();
+
+      loaded.then(fit);
+    })();
+  </script>
 </body>
 </html>
