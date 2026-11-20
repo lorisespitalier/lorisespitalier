@@ -47,32 +47,8 @@ p {
   fill: #000000;
 }
 
-.u {
+.line + .line {
   margin-top: var(--gap);
-}
-
-/* « hey » : interlettrage normal sur mobile, resserré sur grand écran (laptop, PC, TV) */
-.line.hey-tight {
-  display: none;
-}
-
-@media (min-width: 1024px) {
-  .line.hey-wide {
-    display: none;
-  }
-
-  .line.hey-tight {
-    display: block;
-  }
-}
-
-/* Instagram : seul le « u » est affiché */
-.ig .line.hey {
-  display: none;
-}
-
-.ig .u {
-  margin-top: 0;
 }
 
 .box {
