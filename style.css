@@ -1,5 +1,16 @@
+/* Fonte custom : le fichier est dans le dossier fonts/ du dépôt. */
+@font-face {
+  font-family: "Luddites";
+  src: url("fonts/LudditesDemo-Medium.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
 :root {
   color-scheme: light;
+  --gap: 2vw;   /* espace au-dessus de « hey » et entre les deux lignes */
+  --edge: 0px;  /* marge gauche/droite (0 = bord à bord) */
 }
 
 html,
@@ -8,12 +19,13 @@ body {
   padding: 0;
   background: #ffffff;
   color: #000000;
+  overflow-x: hidden;
 }
 
 body {
   font-family: serif;
   font-size: 4mm;
-    line-height: 1.4;
+  line-height: 1.4;
 }
 
 p {
@@ -21,12 +33,53 @@ p {
   padding: 2mm;
 }
 
+/* Page : titre en haut, lien contact en bas */
+.stage {
+  box-sizing: border-box;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding: var(--gap) var(--edge) 0;
+}
+
+#title {
+  margin: 0;
+  font-weight: normal;
+}
+
+/* Chaque ligne est un SVG cadré sur son encre (viewBox posé par le script) */
+.line {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.line + .line {
+  margin-top: var(--gap);
+}
+
+.line text {
+  font-family: "Luddites", serif;
+  font-size: 1000px;
+  font-weight: normal;
+  fill: #000000;
+}
+
+/* Masqué le temps du chargement de la fonte, pour éviter un saut visuel */
+.js .line {
+  visibility: hidden;
+}
+
+.js.ready .line {
+  visibility: visible;
+}
+
 .box {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 4mm 6mm;
+  margin-top: auto;
+  padding: calc(var(--gap) + 4mm) 6mm 4mm;
+  text-align: center;
 }
 
 .box a {
