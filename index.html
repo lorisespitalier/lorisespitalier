@@ -6,46 +6,17 @@
   <meta name="color-scheme" content="light">
   <title>under construction</title>
   <link rel="stylesheet" href="style.css">
-  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
   <main class="stage">
     <h1 id="title" aria-label="hey u">
-      <svg class="line" aria-hidden="true"><text>hey</text></svg>
-      <svg class="line" aria-hidden="true"><text>u</text></svg>
+      <svg class="line" viewBox="100 -700 2392 700" width="2392" height="700" aria-hidden="true"><path d="M621 0H819L820 -2L800 -20V-680L820 -698L819 -700H621L620 -698L640 -680V-425H280V-680L300 -698L299 -700H101L100 -698L120 -680V-20L100 -2L101 0H299L300 -2L280 -20V-285H640V-20L620 -2ZM1021 0H1660V-159L1658 -160L1640 -140H1200V-285H1460L1478 -265L1480 -266V-444L1478 -445L1460 -425H1200V-560H1630L1648 -540L1650 -541V-700H1021L1020 -698L1040 -680V-20L1020 -2ZM2022 0H2220L2221 -2L2201 -20V-309L2469 -680L2492 -698L2491 -700H2278L2277 -698L2293 -680L2121 -443L1949 -680L1965 -698L1964 -700H1751L1750 -698L1773 -680L2041 -309V-20L2021 -2Z"/></svg>
+      <svg class="line" viewBox="90 -700 660 716" width="660" height="716" aria-hidden="true"><path d="M420 16C591 16 730 -100 730 -244V-680L750 -698L749 -700H551L550 -698L570 -680V-254C570 -188 503 -134 420 -134C338 -134 270 -188 270 -254V-680L290 -698L289 -700H91L90 -698L110 -680V-244C110 -100 249 16 420 16Z"/></svg>
     </h1>
 
     <div class="box">
       <a href="mailto:espitalierloris@gmail.com">contact</a>
     </div>
   </main>
-
-  <script>
-    (function () {
-      var lines = document.querySelectorAll('.line');
-
-      // Mesure l'encre réelle de chaque ligne (sans les marges internes de la fonte)
-      // et cadre le SVG dessus : chaque ligne occupe ainsi toute la largeur.
-      function fit() {
-        var ctx = document.createElement('canvas').getContext('2d');
-        ctx.font = '1000px "Luddites", serif';
-        lines.forEach(function (svg) {
-          var m = ctx.measureText(svg.querySelector('text').textContent);
-          var x = -m.actualBoundingBoxLeft;
-          var y = -m.actualBoundingBoxAscent;
-          var w = m.actualBoundingBoxLeft + m.actualBoundingBoxRight;
-          var h = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent;
-          svg.setAttribute('viewBox', [x, y, w, h].join(' '));
-        });
-        document.documentElement.classList.add('ready');
-      }
-
-      var loaded = (document.fonts && document.fonts.load)
-        ? document.fonts.load('1000px "Luddites"', 'hey u').catch(function () {})
-        : Promise.resolve();
-
-      loaded.then(fit);
-    })();
-  </script>
 </body>
 </html>
