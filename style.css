@@ -1,12 +1,3 @@
-/* Fonte custom : le fichier est dans le dossier fonts/ du dépôt. */
-@font-face {
-  font-family: "Luddites";
-  src: url("fonts/LudditesDemo-Medium.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
-
 :root {
   color-scheme: light;
   --gap: 2vw;   /* espace au-dessus de « hey » et entre les deux lignes */
@@ -45,35 +36,19 @@ p {
 
 #title {
   margin: 0;
-  font-weight: normal;
+  font-size: 0; /* pas de texte : uniquement les SVG */
 }
 
-/* Chaque ligne est un SVG cadré sur son encre (viewBox posé par le script) */
+/* Chaque ligne est un SVG cadré au plus près des lettres */
 .line {
   display: block;
   width: 100%;
   height: auto;
-  overflow: visible;
+  fill: #000000;
 }
 
 .line + .line {
   margin-top: var(--gap);
-}
-
-.line text {
-  font-family: "Luddites", serif;
-  font-size: 1000px;
-  font-weight: normal;
-  fill: #000000;
-}
-
-/* Masqué le temps du chargement de la fonte, pour éviter un saut visuel */
-.js .line {
-  visibility: hidden;
-}
-
-.js.ready .line {
-  visibility: visible;
 }
 
 .box {
